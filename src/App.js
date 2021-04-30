@@ -1,5 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+
+class Clock extends React.Component {
+  // Add your methods in here.
+  constructor(props) {
+    super(props);
+    this.state = { date: new Date() };
+  }
+  render() {
+    return <div>{this.state.date.toLocaleTimeString()}</div>;
+  }
+  componentDidMount() {
+    const oneSecond = 1000;
+    setInterval(() => {
+      this.setState({ date: new Date() });
+    }, oneSecond);
+  }
+}
 
 function App() {
   return (
@@ -17,6 +35,7 @@ function App() {
         >
           Learn React
         </a>
+        <Clock />
       </header>
     </div>
   );
